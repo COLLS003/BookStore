@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +28,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //users endpoint
     Route::post('/users/logout', [AuthController::class, 'logout']);
+    //auther endpoints
+    Route::post('authors/create', [AuthorController::class, 'store']);
+    Route::get('authors/list', [AuthorController::class, 'index']);
+    //books endpoint
+    Route::post('books/create', [BookController::class, 'store']);
+    // Route::apiResource('books',BookController::class);
 });
 
