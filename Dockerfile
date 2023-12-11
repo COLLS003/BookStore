@@ -1,5 +1,5 @@
 # Use an official PHP runtime as a parent image
-FROM php:8.1-cli
+FROM php:8.2-cli
 
 # Update package lists and install necessary dependencies
 RUN apt-get update -y \
