@@ -104,7 +104,10 @@ class BookController extends Controller
             $authors = $request->get('authors');
             $item->authors()->sync($authors);
 
-            return response(['data' => $item, 'status' => 200]);
+            // Retrieve the updated item with authors after sync
+            $updatedItem = $this->model->with('authors')->findOrFail($id);
+
+            return response(['data' => $updatedItem, 'status' => 200]);
         } catch (ModelNotFoundException $e) {
             return response(['message' => 'Item Not Found!', 'status' => 404]);
         }

@@ -31,8 +31,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //auther endpoints
     Route::post('authors/create', [AuthorController::class, 'store']);
     Route::get('authors/list', [AuthorController::class, 'index']);
+    Route::put('authors/update/{id}', [AuthorController::class, 'update']);
+    Route::get('authors/read/{id}', [AuthorController::class, 'show']);
+    Route::delete('authors/delete/{id}', [AuthorController::class, 'destroy']);
     //books endpoint
     Route::post('books/create', [BookController::class, 'store']);
+    Route::get('books/list', [BookController::class, 'index']);
+    Route::put('books/update/{id}', [BookController::class, 'update']);
+    Route::delete('books/delete/{id}', [BookController::class, 'destroy']);
+    Route::get('books/read/{id}', [BookController::class, 'show']);
     // Route::apiResource('books',BookController::class);
 });
 
